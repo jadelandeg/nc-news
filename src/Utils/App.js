@@ -14,3 +14,21 @@ export const getArticleByID = (articleID) => {
     return res.data.article;
   });
 };
+
+export const getCommentsByArticleID = (articleID) => {
+  return api.get(`/articles/${articleID}/comments`).then((res) => {
+    return res.data.comments;
+  });
+};
+
+export const getAllUsers = () => {
+  return api.get(`/users`).then((res) => {
+    return res.data.users;
+  });
+};
+
+export const getAllTopics = () => {
+  return api.get("/topics").then((res) => {
+    return res.data.topics;
+  });
+};
