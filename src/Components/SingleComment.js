@@ -24,11 +24,13 @@ const SingleComment = ({ comment, user, setComments, comments }) => {
   };
 
   return (
-    <li key={comment_id}>
-      <p>{body}</p>
-      <p>author: {author}</p>
-      <p>created at: {moment(created_at).format("MMMM Do YYYY")}</p>
-      <p>votes: {localVote}</p>
+    <li className="items" key={comment_id}>
+      <p className="comment-body">{body}</p>
+      <p className="list-info">author: {author}</p>
+      <p className="list-info">
+        created at: {moment(created_at).format("MMMM Do YYYY")}
+      </p>
+      <p className="list-info">votes: {localVote}</p>
       {isDeleted && <p>comment deleted!</p>}
       {user === author && (
         <button onClick={() => handleDelete(comment_id)}>delete</button>

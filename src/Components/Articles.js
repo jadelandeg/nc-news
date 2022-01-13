@@ -37,18 +37,24 @@ const Articles = ({ topic, setTopic }) => {
         {topic === "all"
           ? articles.map((article) => {
               return (
-                <li className="article-items" key={`${article.article_id}`}>
-                  <Link to={`/articles/${article.article_id}`}>
-                    {article.title}
+                <li className="items" key={`${article.article_id}`}>
+                  <Link
+                    to={`/articles/${article.article_id}`}
+                    className="article-list-titles"
+                  >
+                    ➡️{article.title}⬅️
                   </Link>
-                  <p>Topic: {article.topic}</p>
-                  <p>Author: {article.author}</p>
-                  <p>Votes: {article.votes}</p>
-                  <p>
+                  <div className="list-info"></div>
+                  <p className="list-info">Topic: {article.topic}</p>
+                  <p className="list-info">Author: {article.author}</p>
+                  <p className="list-info">Votes: {article.votes}</p>
+                  <p className="list-info">
                     Created At:{" "}
                     {moment(article.created_at).format("MMMM Do YYYY")}
                   </p>
-                  <p>Comment Count: {article.comment_count}</p>
+                  <p className="list-info">
+                    Comment Count: {article.comment_count}
+                  </p>
                 </li>
               );
             })
@@ -58,12 +64,23 @@ const Articles = ({ topic, setTopic }) => {
               })
               .map((article) => {
                 return (
-                  <li key={`${article.article_id}`}>
-                    <Link to={`/articles/${article.article_id}`}>
-                      {article.title}
+                  <li key={`${article.article_id}`} className="items">
+                    <Link
+                      to={`/articles/${article.article_id}`}
+                      className="article-list-titles"
+                    >
+                      ➡️{article.title}⬅️
                     </Link>
-                    <p>Topic: {article.topic}</p>
-                    <p>Author: {article.author}</p>
+                    <p className="list-info">Topic: {article.topic}</p>
+                    <p className="list-info">Author: {article.author}</p>
+                    <p className="list-info">Votes: {article.votes}</p>
+                    <p className="list-info">
+                      Created At:{" "}
+                      {moment(article.created_at).format("MMMM Do YYYY")}
+                    </p>
+                    <p className="list-info">
+                      Comment Count: {article.comment_count}
+                    </p>
                   </li>
                 );
               })}

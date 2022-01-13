@@ -19,8 +19,8 @@ const Comments = ({ articleID, setComments, comments, user }) => {
 
   return (
     <div className="comments">
-      <h2>Comments</h2>
-      <ul>
+      <h2 className="comments-title">Comments</h2>
+      <ul className="list">
         {comments.map((comment) => {
           return (
             <SingleComment

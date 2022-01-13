@@ -28,13 +28,15 @@ const SingleArticle = ({ comments, setComments, user }) => {
   ) : isError ? (
     <p>Error!</p>
   ) : (
-    <main className="single-article">
-      <h2>Single Article</h2>
-      <h3>{article.title}</h3>
-      <p>Topic: {article.topic}</p>
-      <p>{article.body}</p>
-      <ArticleVotes article={article} setIsError={setIsError} />
-      <p>Comment count: {article.comment_count}</p>
+    <main>
+      <div className="single-article">
+        <h2>Single Article</h2>
+        <h3>{article.title}</h3>
+        <p>Topic: {article.topic}</p>
+        <p>{article.body}</p>
+        <ArticleVotes article={article} setIsError={setIsError} />
+        <p>Comment count: {article.comment_count}</p>
+      </div>
       <NewComment user={user} setComments={setComments} comments={comments} />
       <Comments
         user={user}
