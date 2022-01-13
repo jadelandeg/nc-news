@@ -11,6 +11,8 @@ import SingleUser from "./Components/SingleUser";
 
 function App() {
   const [topic, setTopic] = useState("all");
+  const [user, setUser] = useState("grumpy19");
+  const [comments, setComments] = useState([]);
   return (
     <div className="App">
       <BrowserRouter>
@@ -21,10 +23,25 @@ function App() {
             path="/articles"
             element={<Articles topic={topic} setTopic={setTopic} />}
           />
-          <Route path="/articles/:articleID/*" element={<SingleArticle />} />
+          <Route
+            path="/articles/:articleID/*"
+            element={
+              <SingleArticle
+                comments={comments}
+                setComments={setComments}
+                user={user}
+              />
+            }
+          />
           <Route
             path="/articles/:articleID/NewComment"
-            element={<NewComment />}
+            element={
+              <NewComment
+                user={user}
+                comments={comments}
+                setComments={setComments}
+              />
+            }
           />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:username" element={<SingleUser />} />

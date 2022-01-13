@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
-import { getAllTopics } from "../Utils/App";
+import { getAllTopics } from "../Utils/utils";
 
 const Nav = ({ topic, setTopic }) => {
   const [topics, setTopics] = useState([]);

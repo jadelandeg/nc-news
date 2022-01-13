@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
-import { getCommentsByArticleID } from "../Utils/App";
+import { getCommentsByArticleID } from "../Utils/utils";
+import SingleComment from "./SingleComment.js";
 
-const Comments = ({ articleID }) => {
-  const [comments, setComments] = useState([]);
+const Comments = ({ articleID, setComments, comments, user }) => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
@@ -23,13 +23,14 @@ const Comments = ({ articleID }) => {
       <ul>
         {comments.map((comment) => {
           return (
-            <li key={comment.comment_id}>
-              <p>{comment.body}</p>
-              <p>author: {comment.author}</p>
-              <p>created at: {comment.created_at}</p>
-              <p>votes: {comment.votes}</p>
-              <button>Upvote!</button>
-            </li>
+            <SingleComment
+              key={comment.comment_id}
+              comment={comment}
+              setComments={setComments}
+              comments={comments}
+              user={user}
+              articleID={articleID}
+            />
           );
         })}
       </ul>

@@ -1,6 +1,7 @@
-import { getArticles } from "../Utils/App";
+import { getArticles, getArticlesQuery } from "../Utils/utils";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const Articles = ({ topic, setTopic }) => {
   const [articles, setArticles] = useState([]);
@@ -17,19 +18,37 @@ const Articles = ({ topic, setTopic }) => {
       });
   }, [topic]);
 
+  const handleSort = (event) => {
+    getArticlesQuery(event.target.value).then((sortedArticles) => {
+      setArticles(sortedArticles);
+    });
+  };
+
   return (
     <div className="article-main">
-      <h2>Articles</h2>
+      <h2>{topic} articles</h2>
+      <label htmlFor="sortby">sort by:</label>
+      <select name="sortby" id="sortby" onChange={handleSort}>
+        <option value="created_at">date created newest first</option>
+        <option value="comment_count">comment count highest to lowest</option>
+        <option value="votes">votes highest to lowest</option>
+      </select>
       <ul className="article-list">
         {topic === "all"
           ? articles.map((article) => {
               return (
-                <li key={`${article.article_id}`}>
+                <li className="article-items" key={`${article.article_id}`}>
                   <Link to={`/articles/${article.article_id}`}>
                     {article.title}
                   </Link>
                   <p>Topic: {article.topic}</p>
                   <p>Author: {article.author}</p>
+                  <p>Votes: {article.votes}</p>
+                  <p>
+                    Created At:{" "}
+                    {moment(article.created_at).format("MMMM Do YYYY")}
+                  </p>
+                  <p>Comment Count: {article.comment_count}</p>
                 </li>
               );
             })

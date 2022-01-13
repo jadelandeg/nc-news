@@ -32,3 +32,27 @@ export const getAllTopics = () => {
     return res.data.topics;
   });
 };
+
+export const updateArticleVotes = (ID, num) => {
+  return api.patch(`/articles/${ID}`, { inc_votes: num }).then((res) => {
+    return res.data.article;
+  });
+};
+
+export const postNewComment = (articleID, comment) => {
+  return api.post(`articles/${articleID}/comments`, comment).then((res) => {
+    return res.data.comment;
+  });
+};
+
+export const getArticlesQuery = (sortby) => {
+  return api.get(`articles?sort_by=${sortby}`).then((res) => {
+    return res.data.articles;
+  });
+};
+
+export const deleteComment = (commentID) => {
+  return api.delete(`/comments/${commentID}`).then((res) => {
+    return res.data.comment;
+  });
+};

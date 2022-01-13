@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react/cjs/react.development";
-import { getAllUsers } from "../Utils/App";
+import { getAllUsers } from "../Utils/utils";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
