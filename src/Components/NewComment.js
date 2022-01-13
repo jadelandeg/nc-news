@@ -28,7 +28,16 @@ const NewComment = ({ user, comments, setComments }) => {
   };
 
   return isError ? (
-    <p>error!</p>
+    <div>
+      <p>please enter something! </p>{" "}
+      <button
+        onClick={() => {
+          setIsError(false);
+        }}
+      >
+        ok
+      </button>
+    </div>
   ) : (
     <form onSubmit={handleSubmit}>
       <h2>New Comment</h2>
