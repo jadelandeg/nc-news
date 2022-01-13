@@ -5,19 +5,25 @@ import SingleComment from "./SingleComment.js";
 
 const Comments = ({ articleID, setComments, comments, user }) => {
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getCommentsByArticleID(articleID)
       .then((commentsFromAPI) => {
         setComments(commentsFromAPI);
         setIsError(false);
+        setIsLoading(false);
       })
       .catch(() => {
         setIsError(true);
       });
   }, [articleID]);
 
-  return (
+  return isError ? (
+    <p>something went wrong...</p>
+  ) : isLoading ? (
+    <p>loading...</p>
+  ) : (
     <div className="comments">
       <h2 className="comments-title">Comments</h2>
       <ul className="list">

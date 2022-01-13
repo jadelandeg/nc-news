@@ -11,12 +11,16 @@ const Home = ({ setTopic }) => {
       <p>Welcome to NC News</p>
       <section className="HomePageLinks">
         <p>
-          <Link to={"/articles"}>
-            <button onClick={clickSetTopicToAll}>See all articles</button>
-          </Link>
+          <button onClick={clickSetTopicToAll}>
+            {" "}
+            <Link to={"/articles"}>See all articles </Link>
+          </button>
         </p>
         <p>
-          <Link to={"/users"}>See all users</Link>
+          <button>
+            {" "}
+            <Link to={"/users"}>See all users</Link>
+          </button>
         </p>
       </section>
     </div>

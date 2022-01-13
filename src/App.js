@@ -8,6 +8,7 @@ import Home from "./Components/Home";
 import NewComment from "./Components/NewComment";
 import Users from "./Components/Users";
 import SingleUser from "./Components/SingleUser";
+import Error from "./Components/Error";
 
 function App() {
   const [topic, setTopic] = useState("all");
@@ -45,6 +46,7 @@ function App() {
           />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:username" element={<SingleUser />} />
+          <Route path="/*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </div>

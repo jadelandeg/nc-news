@@ -20,7 +20,9 @@ const Nav = ({ topic, setTopic }) => {
 
   return (
     <div className="nav">
-      <Link to="/">Home</Link>
+      <button>
+        <Link to="/">home</Link>
+      </button>
       {topics.map((topic) => {
         return (
           <button

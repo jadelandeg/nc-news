@@ -6,12 +6,14 @@ import moment from "moment";
 const Articles = ({ topic, setTopic }) => {
   const [articles, setArticles] = useState([]);
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticles()
       .then((articlesFromAPI) => {
         setArticles(articlesFromAPI);
         setIsError(false);
+        setIsLoading(false);
       })
       .catch(() => {
         setIsError(true);
@@ -19,12 +21,20 @@ const Articles = ({ topic, setTopic }) => {
   }, [topic]);
 
   const handleSort = (event) => {
-    getArticlesQuery(event.target.value).then((sortedArticles) => {
-      setArticles(sortedArticles);
-    });
+    getArticlesQuery(event.target.value)
+      .then((sortedArticles) => {
+        setArticles(sortedArticles);
+      })
+      .catch(() => {
+        setIsError(true);
+      });
   };
 
-  return (
+  return isError ? (
+    <p>something went wrong...</p>
+  ) : isLoading ? (
+    <p>loading...</p>
+  ) : (
     <div className="article-main">
       <h2>{topic} articles</h2>
       <label htmlFor="sortby">sort by:</label>
@@ -33,7 +43,7 @@ const Articles = ({ topic, setTopic }) => {
         <option value="comment_count">comment count highest to lowest</option>
         <option value="votes">votes highest to lowest</option>
       </select>
-      <ul className="article-list">
+      <ul className="list">
         {topic === "all"
           ? articles.map((article) => {
               return (
