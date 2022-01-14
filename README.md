@@ -11,14 +11,17 @@ The news app gets information from a news API that uses node-postgres to interac
   - Write "git clone https://github.com/jadelandeg/nc-news.git" in your terminal
 
 - Installing dependencies :
-  Run NPM i to install the dependencies listed below:
 
-  - axios
-  - moment
-  - react
-  - react-dom
-  - react-router-dom
-  - react-scripts
+# Node Version 16 or higher required
+
+Run NPM i to install the dependencies listed below:
+
+- axios
+- moment
+- react
+- react-dom
+- react-router-dom
+- react-scripts
 
 - Run NPM start to run the project locally
 
