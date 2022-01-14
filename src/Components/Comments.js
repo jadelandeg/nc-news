@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 import { getCommentsByArticleID } from "../Utils/utils";
 import SingleComment from "./SingleComment.js";
 import NewComment from "./NewComment";

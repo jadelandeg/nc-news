@@ -5,13 +5,11 @@ import { updateArticleVotes } from "../Utils/utils";
 const ArticleVotes = ({ article }) => {
   const { changeVote, localVote } = useVote(article.votes);
   const [isError, setIsError] = useState(false);
-  const [hasVoted, setHasVoted] = useState(false);
   const [upDisable, setUpDisable] = useState(false);
   const [downDisable, setDownDisable] = useState(false);
 
   const handleVote = (num) => {
     changeVote(num);
-    setHasVoted(true);
     num === 1 ? setUpDisable(true) : setDownDisable(true);
     updateArticleVotes(article.article_id, num).catch(() => {
       changeVote(-num);

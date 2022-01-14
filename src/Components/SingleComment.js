@@ -7,6 +7,8 @@ const SingleComment = ({ comment, user, setComments, comments }) => {
   const { changeVote, localVote } = useVote(comment.votes);
   const { comment_id, body, author, created_at } = comment;
   const [isDeleted, setIsDeleted] = useState(false);
+  const [upDisable, setUpDisable] = useState(false);
+  const [downDisable, setDownDisable] = useState(false);
 
   const handleDelete = (commentID) => {
     setIsDeleted(true);
@@ -23,6 +25,11 @@ const SingleComment = ({ comment, user, setComments, comments }) => {
       });
   };
 
+  const handleVote = (num) => {
+    changeVote(num);
+    num === 1 ? setUpDisable(true) : setDownDisable(true);
+  };
+
   return (
     <li className="items" key={comment_id}>
       <p className="comment-body">{body}</p>
@@ -36,15 +43,17 @@ const SingleComment = ({ comment, user, setComments, comments }) => {
         <button onClick={() => handleDelete(comment_id)}>delete</button>
       )}
       <button
+        disabled={upDisable}
         onClick={() => {
-          changeVote(1);
+          handleVote(1);
         }}
       >
         Upvote!
       </button>
       <button
+        disabled={downDisable}
         onClick={() => {
-          changeVote(-1);
+          handleVote(-1);
         }}
       >
         Downvote!
