@@ -7,7 +7,6 @@ const NewComment = ({ user, comments, setComments }) => {
   const [isError, setIsError] = useState(false);
 
   const { articleID } = useParams();
-  console.log(user);
 
   const handleChange = (event) => {
     setFormValue((prevFormValue) => {

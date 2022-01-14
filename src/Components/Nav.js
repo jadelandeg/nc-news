@@ -16,12 +16,18 @@ const Nav = ({ topic, setTopic }) => {
   const topicChange = (topic) => {
     setTopic(topic.slug);
   };
-  console.log(topic);
 
   return (
     <div className="nav">
       <button>
         <Link to="/">home</Link>
+      </button>
+      <button
+        onClick={() => {
+          setTopic("all");
+        }}
+      >
+        <Link to="/articles">all</Link>
       </button>
       {topics.map((topic) => {
         return (

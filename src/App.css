@@ -78,3 +78,12 @@ button {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 20px;
 }
+
+.logged-in {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: 3px solid palevioletred;
+  font-size: 20px;
+  background-color: pink;
+  border-radius: 25px;
+}

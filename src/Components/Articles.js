@@ -20,7 +20,8 @@ const Articles = ({ topic, setTopic }) => {
       });
   }, [topic]);
 
-  const handleSort = (event) => {
+  const handleSort = (event, asc) => {
+    console.log(event.target);
     getArticlesQuery(event.target.value)
       .then((sortedArticles) => {
         setArticles(sortedArticles);
@@ -43,6 +44,14 @@ const Articles = ({ topic, setTopic }) => {
         <option value="comment_count">comment count highest to lowest</option>
         <option value="votes">votes highest to lowest</option>
       </select>
+      {/* <select name="asc/desc" id="asc/desc" onChange={handleSort}>
+        <option value="asc" id="asc/desc">
+          ascending order
+        </option>
+        <option value="desc" id="asc/desc">
+          descending order
+        </option>
+      </select> */}
       <ul className="list">
         {topic === "all"
           ? articles.map((article) => {

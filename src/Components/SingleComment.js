@@ -1,6 +1,6 @@
 import useVote from "../hooks/useVote";
 import moment from "moment";
-import { deleteComment, getCommentsByArticleID } from "../Utils/utils";
+import { deleteComment } from "../Utils/utils";
 import { useState } from "react";
 
 const SingleComment = ({ comment, user, setComments, comments }) => {

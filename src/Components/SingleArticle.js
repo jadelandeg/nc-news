@@ -1,11 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleByID } from "../Utils/utils";
 import Comments from "./Comments";
 import ArticleVotes from "./ArticleVotes";
-import NewComment from "./NewComment";
 
-const SingleArticle = ({ comments, setComments, user }) => {
+const SingleArticle = ({ user }) => {
   const { articleID } = useParams();
 
   const [article, setArticle] = useState({});
@@ -25,8 +24,6 @@ const SingleArticle = ({ comments, setComments, user }) => {
       });
   }, [articleID]);
 
-  console.log(article.votes);
-
   return isError ? (
     <p>Something went wrong...Check your URL</p>
   ) : isLoading ? (
@@ -41,13 +38,7 @@ const SingleArticle = ({ comments, setComments, user }) => {
         <ArticleVotes article={article} />
         <p>Comment count: {article.comment_count}</p>
       </div>
-      <NewComment user={user} setComments={setComments} comments={comments} />
-      <Comments
-        user={user}
-        articleID={articleID}
-        comments={comments}
-        setComments={setComments}
-      />
+      <Comments user={user} articleID={articleID} />
     </main>
   );
 };

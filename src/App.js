@@ -9,15 +9,17 @@ import NewComment from "./Components/NewComment";
 import Users from "./Components/Users";
 import SingleUser from "./Components/SingleUser";
 import Error from "./Components/Error";
+import LoggedIn from "./Components/LoggedIn";
 
 function App() {
   const [topic, setTopic] = useState("all");
   const [user, setUser] = useState("grumpy19");
-  const [comments, setComments] = useState([]);
+
   return (
     <div className="App">
       <BrowserRouter>
         <Nav setTopic={setTopic} topic={topic} />
+        <LoggedIn user={user} />
         <Routes>
           <Route path="/" element={<Home setTopic={setTopic} />} />
           <Route
@@ -26,23 +28,11 @@ function App() {
           />
           <Route
             path="/articles/:articleID/*"
-            element={
-              <SingleArticle
-                comments={comments}
-                setComments={setComments}
-                user={user}
-              />
-            }
+            element={<SingleArticle user={user} />}
           />
           <Route
             path="/articles/:articleID/NewComment"
-            element={
-              <NewComment
-                user={user}
-                comments={comments}
-                setComments={setComments}
-              />
-            }
+            element={<NewComment user={user} />}
           />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:username" element={<SingleUser />} />
